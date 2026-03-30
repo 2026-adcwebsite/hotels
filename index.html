@@ -40,7 +40,7 @@ nav.scrolled{background:rgba(10,37,64,.97);padding:.8rem 3rem;box-shadow:0 4px 2
 .ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0}
 .ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mob{position:fixed;inset:0;z-index:490;background:rgba(10,37,64,.98);backdrop-filter:blur(16px);
+.mob{position:fixed;inset:0;z-index:9000;background:rgba(10,37,64,.98);backdrop-filter:blur(16px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
   visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s;pointer-events:none}
 .mob.open{visibility:visible;opacity:1;pointer-events:all}
@@ -56,7 +56,7 @@ nav.scrolled{background:rgba(10,37,64,.97);padding:.8rem 3rem;box-shadow:0 4px 2
   overflow:hidden;background:var(--navy);
   transition:opacity .8s ease,transform .8s ease;
 }
-#landing.hide{opacity:0;transform:translateY(-40px);pointer-events:none}
+#landing.hide{display:none}
 .lbg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&q=80') center/cover no-repeat;filter:brightness(.33)}
 .lwaves{position:absolute;bottom:0;left:0;width:100%;height:120px;overflow:hidden;pointer-events:none}
 .lwaves svg{width:200%;animation:wave 8s linear infinite}
@@ -80,8 +80,8 @@ nav.scrolled{background:rgba(10,37,64,.97);padding:.8rem 3rem;box-shadow:0 4px 2
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 /* ===== MAIN ===== */
-#main{opacity:0;transform:translateY(18px);transition:opacity .8s ease .3s,transform .8s ease .3s}
-#main.show{opacity:1;transform:translateY(0)}
+#main{display:none}
+#main.show{display:block}
 
 /* ===== HERO ===== */
 .hero{height:100svh;min-height:500px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
@@ -386,7 +386,7 @@ footer{background:#060f1c;padding:3rem;display:grid;grid-template-columns:2fr 1f
 <div id="main">
 
   <!-- NAV -->
-  <nav id="navbar">
+  <nav id="navbar" style="display:none">
     <div class="nav-logo">Hotel <em>ADC</em></div>
     <ul class="nav-links">
       <li><a href="rooms.html">Dhomat</a></li>
@@ -540,15 +540,16 @@ footer{background:#060f1c;padding:3rem;display:grid;grid-template-columns:2fr 1f
     <div class="fbrand"><h2>Hotel <em>ADC</em></h2><p>Resort & Spa me 5 yje në zemër të Rivierës Shqiptare.</p><div class="socials"><a class="soc" href="#">f</a><a class="soc" href="#">in</a><a class="soc" href="#">✦</a><a class="soc" href="#">▶</a></div></div>
     <div class="fcol"><h4>Faqet</h4><ul><li><a href="rooms.html">Dhomat & Çmimet</a></li><li><a href="restaurant.html">Restoranti & Spa</a></li><li><a href="gallery.html">Galeria</a></li><li><a href="activities.html">Aktivitete</a></li><li><a href="rezervo.html">Rezervo</a></li></ul></div>
     <div class="fcol"><h4>Info</h4><ul><li><a href="#">Rreth Nesh</a></li><li><a href="#">Politika Anulimit</a></li><li><a href="#">FAQ</a></li><li><a href="#">Aksesueshmëria</a></li></ul></div>
-    <div class="fcol"><h4>Kontakt</h4><ul><li><a href="#">📍 Riviera Shqiptare</a></li><li><a href="tel:+355123456">📞 +355 12 345 678</a></li><li><a href="mailto:info@adc.al">✉ info@adc.al</a></li><li><a href="#">⏰ Reception 24/7</a></li></ul></div>
+    <div class="fcol"><h4>Kontakt</h4><ul><li><a href="#">📍 Riviera Shqiptare</a></li><li><a href="tel:+355123456">📞 +355 12 345 678</a></li><li><a href="/cdn-cgi/l/email-protection#066f686069466762746f67726f6d28676a">✉ <span class="__cf_email__" data-cfemail="adc4c3cbc2edccc9dfc4ccd9c4c683ccc1">[email&#160;protected]</span></a></li><li><a href="#">⏰ Reception 24/7</a></li></ul></div>
   </footer>
   <div class="fbot"><span>© 2025 Hotel ADC Resort & Spa</span><span>Projektuar me ❤️ për Rivierën Shqiptare</span></div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function enterMain(){
   document.getElementById('landing').classList.add('hide');
   document.getElementById('main').classList.add('show');
+  document.getElementById('navbar').style.display = '';
 }
 function goPage(url){window.location.href=url}
 function openModal(){
@@ -567,8 +568,4 @@ function closeLbox(){document.getElementById('lbox').classList.remove('open');do
 function toggleMob(){var h=document.getElementById('ham'),m=document.getElementById('mob');if(h.classList.contains('open')){closeMob()}else{h.classList.add('open');m.classList.add('open');document.body.style.overflow='hidden'}}
 function closeMob(){document.getElementById('ham').classList.remove('open');document.getElementById('mob').classList.remove('open');document.body.style.overflow=''}
 window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>70)});
-(function(){var d=new Date(),f=function(x){return x.toISOString().split('T')[0]};var t1=new Date(d);t1.setDate(d.getDate()+1);var t2=new Date(d);t2.setDate(d.getDate()+7);document.getElementById('qci').value=f(t1);document.getElementById('qco').value=f(t2)})();
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeLbox();closeMob()}});
-</script>
-</body>
-</html>
+(function(){var d=new Date(),f=function(x){return x.toISOString().split('T')[0]};var t1=new Date(d);t1.setDate(d.getDate()+1);var t2=new Date(d);t2.setDate(d.ge
