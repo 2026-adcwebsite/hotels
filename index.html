@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hotel Adriatik Resort & Spa</title>
+<title>Hotel ADC Resort & Spa</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -80,8 +80,8 @@ nav.scrolled{background:rgba(10,37,64,.97);padding:.8rem 3rem;box-shadow:0 4px 2
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 /* ===== MAIN ===== */
-#main{opacity:0;pointer-events:none;transition:opacity .6s ease .2s}
-#main.show{opacity:1;pointer-events:all}
+#main{visibility:hidden}
+#main.show{visibility:visible}
 
 /* ===== HERO ===== */
 .hero{height:100svh;min-height:500px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
@@ -349,7 +349,7 @@ footer{background:#060f1c;padding:3rem;display:grid;grid-template-columns:2fr 1f
   </div>
   <div class="lc">
     <span class="lbadge">⭐ Resort 5 Yje · Riviera Shqiptare</span>
-    <h1 class="ltitle">Hotel<br><em>Adriatik</em><br>Resort & Spa</h1>
+    <h1 class="ltitle">Hotel<br><em>ADC</em><br>Resort & Spa</h1>
     <p class="lsub">Ku deti takon luksin · Çdo moment është i pashlyeshëm</p>
     <div class="lcards">
       <div class="lcard" onclick="goPage('rooms.html')" tabindex="0">
@@ -383,20 +383,12 @@ footer{background:#060f1c;padding:3rem;display:grid;grid-template-columns:2fr 1f
 </div>
 
 <!-- ===== MAIN ===== -->
-<div class="mob" id="mob">
-    <a href="rooms.html" onclick="closeMob()">Dhomat</a>
-    <a href="restaurant.html" onclick="closeMob()">Restoranti & Spa</a>
-    <a href="gallery.html" onclick="closeMob()">Galeria</a>
-    <a href="activities.html" onclick="closeMob()">Aktivitete</a>
-    <button class="mob-cta" onclick="closeMob();window.location='rezervo.html'">Rezervo Tani</button>
-    <span class="mob-tel">📞 +355 12 345 678</span>
-  </div>
 
 <div id="main">
 
   <!-- NAV -->
-  <nav id="navbar" style="opacity:0;pointer-events:none;transition:opacity .4s">
-    <div class="nav-logo">Hotel <em>Adriatik</em></div>
+  <nav id="navbar">
+    <div class="nav-logo">Hotel <em>ADC</em></div>
     <ul class="nav-links">
       <li><a href="rooms.html">Dhomat</a></li>
       <li><a href="restaurant.html">Restoranti & Spa</a></li>
@@ -407,6 +399,14 @@ footer{background:#060f1c;padding:3rem;display:grid;grid-template-columns:2fr 1f
     <a class="nav-cta" href="rezervo.html">Rezervo</a>
     <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
   </nav>
+  <div class="mob" id="mob">
+    <a href="rooms.html" onclick="closeMob()">Dhomat</a>
+    <a href="restaurant.html" onclick="closeMob()">Restoranti & Spa</a>
+    <a href="gallery.html" onclick="closeMob()">Galeria</a>
+    <a href="activities.html" onclick="closeMob()">Aktivitete</a>
+    <button class="mob-cta" onclick="closeMob();window.location='rezervo.html'">Rezervo Tani</button>
+    <span class="mob-tel">📞 +355 12 345 678</span>
+  </div>
   
 
   <!-- HERO -->
@@ -551,7 +551,6 @@ footer{background:#060f1c;padding:3rem;display:grid;grid-template-columns:2fr 1f
 function enterMain(){
   document.getElementById('landing').classList.add('hide');
   document.getElementById('main').classList.add('show');
-  var nb=document.getElementById('navbar');nb.style.opacity='1';nb.style.pointerEvents='';
 }
 function goPage(url){window.location.href=url}
 function openModal(){
